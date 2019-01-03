@@ -158,7 +158,7 @@ public class Picture extends SimplePicture
 	Pixel topPixel = null;
 	Pixel bottomPixel = null;
 	int height = pixels.length;
-	for (int col = 0; col < pixels.length; col++)
+	for (int col = 0; col < pixels[0].length; col++)
 	{
 	  for (int row = 0; row < height / 2; row++)
 	  {
@@ -275,8 +275,12 @@ public class Picture extends SimplePicture
   public static void main(String[] args) 
   {
     Picture beach = new Picture("beach.jpg");
+//    beach.explore();
+//    beach.zeroBlue();
     beach.explore();
-    beach.zeroBlue();
+    beach.zeroRed();
+    beach.explore();
+    beach.mirrorHorizontal();
     beach.explore();
   }
   
