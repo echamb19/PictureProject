@@ -80,6 +80,36 @@ public class IntArrayWorker
     }
   }
   
+  public int getLargest()
+  {
+	  int largest = Integer.MIN_VALUE;
+	  
+	  for (int col = 0; col < matrix[0].length; col++)
+	  {
+		  for (int row = 0; row < matrix.length; row++)
+		  {
+			  if (largest < matrix[row][col])
+				  {
+				  	largest = matrix[row][col];
+				  }
+		  }
+	  }
+	  
+	  return largest;
+  }
+  
+  public int getColTotal(int nums2)
+  {
+	  int colTotal = 0;
+	  
+	  for(int col = 0; col < matrix[0].length; col++)
+	  {
+		  colTotal += nums2;
+	  }
+	  
+	  return colTotal;
+  }
+  
   /**
    * print the values in the array in rows and columns
    */
@@ -117,4 +147,10 @@ public class IntArrayWorker
     }
   }
  
+
+  
 }
+
+
+
+

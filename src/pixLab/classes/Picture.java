@@ -16,7 +16,7 @@ import java.util.List; // resolves problem with java.awt.List and java.util.List
  */
 public class Picture extends SimplePicture 
 {
-  ///////////////////// constructors //////////////////////////////////
+  ///////////////////// constructors //////////////////////
   
   /**
    * Constructor that takes no arguments 
