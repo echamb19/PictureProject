@@ -501,9 +501,9 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
     pictureFrame.repaint();
   }
   
-  //****************************************//
-  //               Event Listeners          //
-  //****************************************//
+  //***********************************//
+  //          Event Listeners          //
+  //***********************************//
   
   /**
    * Called when the mouse is dragged (button held down and moved)

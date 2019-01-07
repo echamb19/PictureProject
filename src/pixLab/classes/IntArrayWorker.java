@@ -94,7 +94,7 @@ public class IntArrayWorker
 				  }
 		  }
 	  }
-	  
+
 	  return largest;
   }
   
@@ -102,9 +102,9 @@ public class IntArrayWorker
   {
 	  int colTotal = 0;
 	  
-	  for(int col = 0; col < matrix[0].length; col++)
+	  for(int row = 0; row < matrix.length; row++)
 	  {
-		  colTotal += nums2;
+		  colTotal += matrix[row][nums2];
 	  }
 	  
 	  return colTotal;
@@ -147,10 +147,5 @@ public class IntArrayWorker
     }
   }
  
-
-  
 }
-
-
-
 
