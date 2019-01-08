@@ -151,7 +151,7 @@ public class Picture extends SimplePicture
 		  }
 	  }
   }
-  
+
   public void mirrorHorizontal()
   {
 	Pixel [][] pixels = this.getPixels2D();
@@ -193,6 +193,25 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void mirrorGull() 
+  {
+	  int mirrorPoint = 350;
+	  Pixel leftPixel = null; 
+	  Pixel rightPixel = null; 
+	  //int count = 0;
+	  Pixel [][] pixels = this.getPixels2D();
+	  
+	  for (int row = 225; row < 325; row++)
+	  {
+		  for (int col = 225; col < mirrorPoint; col++)
+			  {
+			  	leftPixel = pixels[row][col];
+			  	rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+			  	rightPixel.setColor(leftPixel.getColor());
+			  }
+	  }
+  }
+  
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
     * current picture
@@ -223,21 +242,23 @@ public class Picture extends SimplePicture
       }
     }   
   }
-
+  
+ 
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
-    Picture flower1 = new Picture("flower1.jpg");
-    Picture flower2 = new Picture("flower2.jpg");
-    this.copy(flower1,0,0);
-    this.copy(flower2,100,0);
-    this.copy(flower1,200,0);
-    Picture flowerNoBlue = new Picture(flower2);
-    flowerNoBlue.zeroBlue();
-    this.copy(flowerNoBlue,300,0);
-    this.copy(flower1,400,0);
-    this.copy(flower2,500,0);
-    this.mirrorVertical();
+//    Picture flower1 = new Picture("flower1.jpg");
+//    Picture flower2 = new Picture("flower2.jpg");
+	  Picture seagull = new Picture("seagull.jpg");
+    this.copy(seagull,0,0);
+    this.copy(seagull,100,0);
+    this.copy(seagull,200,0);
+    Picture seagullNoBlue = new Picture(seagull);
+    seagullNoBlue.zeroBlue();
+    this.copy(seagullNoBlue,300,0);
+    this.copy(seagull,400,0);
+    this.copy(seagull,500,0);
+    //this.mirrorVertical();
     this.write("collage.jpg");
   }
   
@@ -275,13 +296,18 @@ public class Picture extends SimplePicture
   public static void main(String[] args) 
   {
     Picture beach = new Picture("beach.jpg");
+    Picture seagull = new Picture("seagull.jpg");
 //    beach.explore();
 //    beach.zeroBlue();
-    beach.explore();
-    beach.zeroRed();
-    beach.explore();
-    beach.mirrorHorizontal();
-    beach.explore();
+//    beach.explore();
+//    beach.zeroRed();
+//    beach.explore();
+//    beach.mirrorHorizontal();
+//    beach.explore();
+    seagull.explore();
+    seagull.mirrorGull();
+    seagull.explore();
+    
   }
   
 } // this } is the end of class Picture, put all new methods before this
