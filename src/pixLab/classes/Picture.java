@@ -115,6 +115,19 @@ public class Picture extends SimplePicture
 		  }
   }
   
+  public void zeroGreen()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  int width = pixels[0].length;
+	  for(int row = 0; row < pixels.length; row++)
+		  {
+		  	for(int col = 0; col < pixels[0].length; col++)
+		  	{
+		  		pixels[row][col].setGreen(0);
+		  	}
+		  }
+  }
+  
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
     * from left to right */
@@ -274,10 +287,13 @@ public class Picture extends SimplePicture
 		for (int  col = 0; col < pixels[0].length; col++)
 		{
 			shiftedValue = (col + amount) % width;
+			if (amount < 0)
+			{
+				shiftedValue = ((col + amount) % width + width) % width;
+			}
 			copied[row][col].setColor(pixels[row][shiftedValue].getColor());
 		}
 	}
-	
 	
 	for (int row = 0; row < pixels.length; row++)
 	{
@@ -332,6 +348,91 @@ public class Picture extends SimplePicture
     this.write("collage.jpg");
   }
   
+  public void mirrorRandom()
+  {
+	  Pixel leftPixel = null;
+	  Pixel rightPixel = null;
+//	  Pixel topPixel = null;
+//	  Pixel bottomPixel = null;
+	  Pixel[][] pixels = this.getPixels2D();
+	  int height = pixels.length;
+	  int width = pixels[0].length; 
+	  int widthMirrorPoint = (int) ((width - 1) * Math.random());
+	  int heightMirrorPoint = (int) ((height - 1) * Math.random());
+
+	  for (int row = heightMirrorPoint; row < pixels.length; row++)
+	  {
+		  for (int col = widthMirrorPoint; col < pixels[0].length; col++)
+		  {
+			  leftPixel = pixels[row][col];
+			  rightPixel = pixels[row][(widthMirrorPoint - col + widthMirrorPoint)]; 
+			  rightPixel.setColor(leftPixel.getColor());
+		  }
+	  }
+
+  }
+
+  public void randomPixelsColor()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  int height = pixels.length;
+	  int width = pixels[0].length; 
+		int red = (int) (Math.random() * 256);
+		int green = (int) (Math.random() * 256);
+		int blue = (int) (Math.random() * 256);
+		int pix = (int) (Math.random() * width);
+
+		for(int row = 0; row < height; row++)
+		{
+
+		}
+  }
+  
+  public void glitchy()
+  {
+	  int num = (int) (7 * Math.random());
+
+	  if(num == 0)
+	  {
+	//	  this.allBlue();
+	  }
+	  if(num == 1)
+	  {
+	//	  this.allGreen();
+	  }
+	  if(num == 2)
+	  {
+	//	  this.allRed();
+	  }
+	  if(num == 3)
+	  {
+		  this.zeroBlue();
+	  }
+	  if(num == 4)
+	  {
+		  this.zeroGreen();
+	  }
+	  if(num == 5)
+	  {
+		  this.zeroRed();
+	  }
+	  if(num == 6)
+	  {
+	//	  this.halfAllButBlue();
+	  }
+
+	  this.mirrorRandom();
+
+
+}
+
+  
+  public void glitchify()
+  {
+	  this.mirrorGull();
+	  this.zeroBlue();
+	  
+  }
   
   /** Method to show large changes in color 
     * @param edgeDist the distance for finding edges
@@ -377,7 +478,9 @@ public class Picture extends SimplePicture
     seagull.explore();
     seagull.mirrorGull();
     seagull.explore();
-    
+    beach.explore();
+    beach.shiftLeftRight(-800);
+    beach.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this

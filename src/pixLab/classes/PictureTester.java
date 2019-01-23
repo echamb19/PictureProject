@@ -55,6 +55,14 @@ public class PictureTester
     temple.explore();
   }
   
+  public static void testGlitchify()
+  {
+	  Picture temple = new Picture("temple.jpg");
+	  temple.explore(); 
+	  temple.glitchify();
+	  temple.explore();
+  }
+  
   /** Method to test the collage method */
   public static void testCollage()
   {
@@ -100,6 +108,7 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
-	  testChromakey();
+//	  testChromakey();
+	  testGlitchify();
   }
 }
