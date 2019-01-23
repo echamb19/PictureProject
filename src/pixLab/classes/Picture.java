@@ -422,10 +422,51 @@ public class Picture extends SimplePicture
 	  }
 
 	  this.mirrorRandom();
-
-
 }
 
+  public void hidePicture(Picture hidden)
+  {
+	  Pixel[][] pixels = this.getPixels2D(); 
+	  Pixel[][] hiddenPixels = hidden.getPixels2D(); 
+	  
+	  for (int row = 0; row < pixels.length && row < hiddenPixels.length; row++)
+	  {
+		  for (int col = 0; col < pixels[0].length && col < hiddenPixels[0].length; col++)
+		  {
+			  if (hiddenPixels[row][col].colorDistance(Color.WHITE) > 5)
+			  {
+				  if (pixels[row][col].getRed() > 0 && pixels[row][col].getRed() % 2 != 1)
+					  {
+					  		pixels[row][col].setRed(pixels[row][col].getRed() - 1);
+					  }
+			  }
+			  else if (pixels[row][col].getRed() > 0 && pixels[row][col].getRed() % 2 == 1)
+			  {
+				  pixels[row][col].setRed(pixels[row][col].getRed() - 1);
+			  }
+		  }
+	  }
+  }
+  
+  public void revealPicture() 
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  
+	  for (int row = 0; row < pixels.length; row++)
+	  {
+		  for(int col = 0; col < pixels[0].length; col++)
+		  {
+			  if(pixels[row][col].getRed() > 0  && pixels[row][col].getRed() % 2 != 1)
+			  {
+				  pixels[row][col].setColor(Color.RED); 
+			  }
+			  else if (pixels[row][col].getRed() % 2 == 1)
+			  {
+				  pixels[row][col].setColor(Color.CYAN);
+			  }
+		  }
+	  }
+  }
   
   public void glitchify()
   {

@@ -63,6 +63,19 @@ public class PictureTester
 	  temple.explore();
   }
   
+  public static void testSteganography()
+  {
+	  Picture source = new Picture("Tree that would be fun to climb.jpg");
+	  
+	  Picture message = new Picture("Papyrus.jpg");
+	  source.explore();
+	  message.explore(); 
+	  source.hidePicture(message); 
+	  source.explore(); 
+	  source.revealPicture(); 
+	  source.explore();
+  }
+  
   /** Method to test the collage method */
   public static void testCollage()
   {
@@ -109,6 +122,7 @@ public class PictureTester
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
 //	  testChromakey();
-	  testGlitchify();
+//	  testGlitchify();
+	  testSteganography();
   }
 }
