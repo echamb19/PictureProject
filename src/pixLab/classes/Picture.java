@@ -118,7 +118,6 @@ public class Picture extends SimplePicture
   public void zeroGreen()
   {
 	  Pixel[][] pixels = this.getPixels2D();
-	  int width = pixels[0].length;
 	  for(int row = 0; row < pixels.length; row++)
 		  {
 		  	for(int col = 0; col < pixels[0].length; col++)
@@ -128,9 +127,91 @@ public class Picture extends SimplePicture
 		  }
   }
   
-  /** Method that mirrors the picture around a 
-    * vertical mirror in the center of the picture
-    * from left to right */
+  public void allGreen()
+  {
+	  Pixel[][] pixels = this.getPixels2D(); 
+	  for(int row = 0; row < pixels.length; row++)
+	  {
+		  for(int col = 0; col < pixels[0].length; col++)
+		  {
+			  pixels[row][col].setRed(0);
+			  pixels[row][col].setBlue(0);
+		  }
+	  }
+  }
+  
+  public void allBlue()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for(int row = 0; row < pixels.length; row++)
+	  {
+		  for(int col = 0; col < pixels[0].length; col++)
+		  {
+			  pixels[row][col].setRed(0);
+			  pixels[row][col].setGreen(0);
+		  }
+	  }
+  }
+  
+  public void allRed()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for(int row = 0; row < pixels.length; row++)
+	  {
+		  for(int col = 0; col < pixels[0].length; col++)
+		  {
+			  pixels[row][col].setGreen(0);
+			  pixels[row][col].setBlue(0);
+		  }
+	  }
+  }
+  
+  public void halfAllButBlue()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for(int row = 0; row < pixels.length; row++)
+	  {
+		  for(int col = 0; col < pixels[0].length; col++)
+		  {
+			  int red = pixels[row][col].getRed();
+			  int green = pixels[row][col].getGreen(); 
+			  pixels[row][col].setRed(red/2);
+			  pixels[row][col].setGreen(green/2);
+		  }
+	  }
+  }
+  
+  public void halfAllButRed()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for(int row = 0; row < pixels.length; row++)
+	  {
+		  for(int col = 0; col < pixels[00].length; col++)
+		  {
+			  int blue = pixels[row][col].getBlue();
+			  int green = pixels[row][col].getGreen();
+			  pixels[row][col].setBlue(blue/2);
+			  pixels[row][col].setGreen(green/2);
+		  }
+	  }
+  }
+  
+  public void halfAllButGreen()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for(int row = 0; row < pixels.length; row++)
+	  {
+		  for(int col = 0; col < pixels[0].length; col++)
+		  {
+			  int blue = pixels[row][col].getBlue();
+			  int red = pixels[row][col].getRed();
+			  pixels[row][col].setBlue(blue/2);
+			  pixels[row][col].setRed(red/2);
+		  }
+	  }
+  }
+  
+  /** Method that mirrors the picture from left to right */
   public void mirrorVertical()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -148,6 +229,7 @@ public class Picture extends SimplePicture
     } 
   }
   
+  /** Method that mirrors the picture from right to left */
   public void mirrorVerticalReverse()
   {
 	  Pixel[][] pixels = this.getPixels2D();
@@ -165,6 +247,7 @@ public class Picture extends SimplePicture
 	  }
   }
 
+  /** Method that mirrors the picture from top to bottom */
   public void mirrorHorizontal()
   {
 	Pixel [][] pixels = this.getPixels2D();
@@ -206,6 +289,7 @@ public class Picture extends SimplePicture
     }
   }
   
+  /** Method that green-screens a color in a picture */
   public void chromakey(Picture replacement, Color changeColor)
   {
 	  Pixel [][] mainPixels = this.getPixels2D();
@@ -223,6 +307,7 @@ public class Picture extends SimplePicture
 	  }
   }
   
+  /** Multiply all the birds */
   public void mirrorGull() 
   {
 	  int mirrorPoint = 350;
@@ -273,6 +358,7 @@ public class Picture extends SimplePicture
     }   
   }
   
+  /** Shifts a picture horizontally */
   public void shiftLeftRight(int amount)
   {
 	Pixel [][] pixels = this.getPixels2D();
@@ -304,6 +390,7 @@ public class Picture extends SimplePicture
 	}
   }
   
+  /** Shifts a picture vertically */
   public void shiftUpDown(int amount)
   {
 	  Pixel[][] pixels = this.getPixels2D();
@@ -348,6 +435,7 @@ public class Picture extends SimplePicture
     this.write("collage.jpg");
   }
   
+  /** Mirrors a picture at a randomly selected point in the picture */
   public void mirrorRandom()
   {
 	  Pixel leftPixel = null;
@@ -372,6 +460,7 @@ public class Picture extends SimplePicture
 
   }
 
+  /** Makes a pixel in a picture a random color */
   public void randomPixelsColor()
   {
 	  Pixel[][] pixels = this.getPixels2D();
@@ -388,21 +477,22 @@ public class Picture extends SimplePicture
 		}
   }
   
+  /* Makes a picture have a random color change */
   public void glitchy()
   {
-	  int num = (int) (7 * Math.random());
+	  int num = (int) (9 * Math.random());
 
 	  if(num == 0)
 	  {
-	//	  this.allBlue();
+		  this.allBlue();
 	  }
 	  if(num == 1)
 	  {
-	//	  this.allGreen();
+		  this.allGreen();
 	  }
 	  if(num == 2)
 	  {
-	//	  this.allRed();
+		  this.allRed();
 	  }
 	  if(num == 3)
 	  {
@@ -418,12 +508,21 @@ public class Picture extends SimplePicture
 	  }
 	  if(num == 6)
 	  {
-	//	  this.halfAllButBlue();
+		  this.halfAllButBlue();
+	  }
+	  if(num == 7)
+	  {
+		  this.halfAllButRed();
+	  }
+	  if(num == 8)
+	  {
+		  
 	  }
 
 	  this.mirrorRandom();
 }
 
+  /** Hides a picture inside another picture */
   public void hidePicture(Picture hidden)
   {
 	  Pixel[][] pixels = this.getPixels2D(); 
@@ -448,6 +547,7 @@ public class Picture extends SimplePicture
 	  }
   }
   
+  /** Takes a picture and searches for a hidden picture within */
   public void revealPicture() 
   {
 	  Pixel[][] pixels = this.getPixels2D();
@@ -468,11 +568,13 @@ public class Picture extends SimplePicture
 	  }
   }
   
+  /** The final glitching thing that will glitch things */
   public void glitchify()
   {
-	  this.mirrorGull();
-	  this.zeroBlue();
-	  
+	  this.mirrorRandom();
+//	  this.zeroBlue();
+	  this.glitchy();
+	  this.mirrorHorizontal();
   }
   
   /** Method to show large changes in color 
@@ -501,7 +603,6 @@ public class Picture extends SimplePicture
     }
   }
   
-  
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
@@ -516,12 +617,12 @@ public class Picture extends SimplePicture
 //    beach.explore();
 //    beach.mirrorHorizontal();
 //    beach.explore();
-    seagull.explore();
-    seagull.mirrorGull();
-    seagull.explore();
-    beach.explore();
-    beach.shiftLeftRight(-800);
-    beach.explore();
+//    seagull.explore();
+//    seagull.mirrorGull();
+//    seagull.explore();
+//    beach.explore();
+//    beach.shiftLeftRight(-800);
+//    beach.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this

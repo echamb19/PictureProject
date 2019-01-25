@@ -12,16 +12,16 @@ import java.awt.Color;
  */
 public class PictureTester
 {
-  
-	  public static void testChromakey()
-	  {
+  /** Method to test chromakey */
+  public static void testChromakey()
+	{
 		  Picture source = new Picture("Dragones!!!.jpg"); 
 		  Picture background = new Picture("Tree that would be fun to climb.jpg");
 		  source.explore();
 		  background.explore(); 
 		  source.chromakey(background, Color.BLACK);
 		  source.explore();
-	  }
+	}
 	
 	/** Method to test zeroBlue */
   public static void testZeroBlue()
@@ -32,9 +32,10 @@ public class PictureTester
     beach.explore();
   }
   
+  /** Method to test mirrorGull */
   public static void testMirrorGull()
   {
-	  
+	  //mirrorGull();
   }
   
   /** Method to test mirrorVertical */
@@ -55,14 +56,16 @@ public class PictureTester
     temple.explore();
   }
   
+  /** Method to test the Glitchify method for my project */
   public static void testGlitchify()
   {
-	  Picture temple = new Picture("temple.jpg");
-	  temple.explore(); 
-	  temple.glitchify();
-	  temple.explore();
+	  Picture koala = new Picture("koala.jpg");
+	  koala.explore(); 
+	  koala.glitchify();
+	  koala.explore();
   }
   
+  /** Method to test the steganography */
   public static void testSteganography()
   {
 	  Picture source = new Picture("Tree that would be fun to climb.jpg");
@@ -92,8 +95,7 @@ public class PictureTester
     swan.explore();
   }
   
-  /** Main method for testing.  Every class can have a main
-    * method in Java */
+  /** Main method for testing. Every class can have a main method in Java */
   public static void main(String[] args)
   {
     // uncomment a call here to run a test
@@ -122,7 +124,7 @@ public class PictureTester
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
 //	  testChromakey();
-//	  testGlitchify();
-	  testSteganography();
+	  testGlitchify();
+//	  testSteganography();
   }
 }
