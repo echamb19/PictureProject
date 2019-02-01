@@ -59,10 +59,10 @@ public class PictureTester
   /** Method to test the Glitchify method for my project */
   public static void testGlitchify()
   {
-	  Picture koala = new Picture("koala.jpg");
-	  koala.explore(); 
-	  koala.glitchify();
-	  koala.explore();
+	  Picture Pap = new Picture("koala.jpg");
+	  Pap.explore(); 
+	  Pap.glitchify();
+	  Pap.explore();
   }
   
   /** Method to test the steganography */

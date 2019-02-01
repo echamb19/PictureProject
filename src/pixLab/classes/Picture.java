@@ -246,6 +246,24 @@ public class Picture extends SimplePicture
 		  }
 	  }
   }
+  
+  /** Method that mirrors the picture from bottom to top */
+  public void mirrorHorizontalReverse()
+  {
+	  Pixel [][] pixels = this.getPixels2D();
+	  Pixel topPixel = null; 
+	  Pixel bottomPixel = null;
+	  int height = pixels.length;
+	  for(int col = 0; col < pixels[0].length; col++)
+	  {
+		  for(int row = 0; row < pixels.length; row++)
+		  {
+			  bottomPixel = pixels[row][col];
+			  topPixel = pixels [height - 1 - row][col]; 
+			  topPixel.setColor(bottomPixel.getColor());
+		  }
+	  }
+  }
 
   /** Method that mirrors the picture from top to bottom */
   public void mirrorHorizontal()
@@ -263,6 +281,29 @@ public class Picture extends SimplePicture
 		bottomPixel.setColor(topPixel.getColor());  			
 	  }
 	}
+  }
+  
+  /** Method that picks a random way to mirror it */
+  public void maybeMirror()
+  {
+	  int num = (int) (5 * Math.random());
+	  
+	  if(num == 1)
+	  {
+		  this.mirrorHorizontal();
+	  }
+	  if(num == 2)
+	  {
+		  this.mirrorVertical();
+	  }
+	  if(num == 3)
+	  {
+		  this.mirrorHorizontalReverse();
+	  }
+	  if(num == 4)
+	  {
+		  this.mirrorVerticalReverse();
+	  }
   }
   
   /** Mirror just part of a picture of a temple */
@@ -480,7 +521,7 @@ public class Picture extends SimplePicture
   /* Makes a picture have a random color change */
   public void glitchy()
   {
-	  int num = (int) (9 * Math.random());
+	  int num = (int) (6 * Math.random());
 
 	  if(num == 0)
 	  {
@@ -506,21 +547,33 @@ public class Picture extends SimplePicture
 	  {
 		  this.zeroRed();
 	  }
-	  if(num == 6)
+	  
+//	  this.mirrorRandom();
+}
+  
+  /* Makes a picture halve 2 of three colors randomly */
+  public void pickAHalf()
+  {
+	  int num = (int) (5 * Math.random());
+	  
+	  if(num == 1)
 	  {
 		  this.halfAllButBlue();
 	  }
-	  if(num == 7)
+	  if(num == 2)
 	  {
 		  this.halfAllButRed();
 	  }
-	  if(num == 8)
+	  if(num == 3)
+	  {
+		  this.halfAllButGreen();
+	  }
+	  if(num == 4)
 	  {
 		  
 	  }
-
-	  this.mirrorRandom();
-}
+	  
+  }
 
   /** Hides a picture inside another picture */
   public void hidePicture(Picture hidden)
@@ -572,9 +625,17 @@ public class Picture extends SimplePicture
   public void glitchify()
   {
 	  this.mirrorRandom();
-//	  this.zeroBlue();
-	  this.glitchy();
+	  this.explore();
 	  this.mirrorHorizontal();
+	  this.explore();
+	  this.glitchy();
+	  this.explore();
+	  this.pickAHalf();
+	  this.explore();
+	  this.maybeMirror();
+	  this.explore();
+	  this.shiftLeftRight(50);
+	  this.explore();
   }
   
   /** Method to show large changes in color 
